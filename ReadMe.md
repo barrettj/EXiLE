@@ -4,6 +4,10 @@ EXiLE (**E**asy **Xi**b **L**ocalization **E**ntity) is meant to be an easy way 
 
 Documentation is forth coming, as this is a work in progress.  Check the demo app to see how it's used (note the AppDelegate setting the block and the view controller's view did load).
 
+ARC
+-------------
+This project uses ARC.
+
 License
 -------------
 Released under an MIT License with a please tweet me (@barrettjacobsen) to let me know you're using it, mostly because I'm vain.
