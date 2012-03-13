@@ -1,0 +1,299 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6FBC7179150F894500588A16 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBC7178150F894500588A16 /* UIKit.framework */; };
+		6FBC717B150F894500588A16 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBC717A150F894500588A16 /* Foundation.framework */; };
+		6FBC717D150F894500588A16 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBC717C150F894500588A16 /* CoreGraphics.framework */; };
+		6FBC7183150F894500588A16 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6FBC7181150F894500588A16 /* InfoPlist.strings */; };
+		6FBC7185150F894500588A16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBC7184150F894500588A16 /* main.m */; };
+		6FBC7189150F894500588A16 /* BJAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBC7188150F894500588A16 /* BJAppDelegate.m */; };
+		6FBC718C150F894500588A16 /* BJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBC718B150F894500588A16 /* BJViewController.m */; };
+		6FBC718F150F894500588A16 /* BJViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FBC718D150F894500588A16 /* BJViewController.xib */; };
+		6FBC7198150F8A8A00588A16 /* EXiLE.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBC7197150F8A8A00588A16 /* EXiLE.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6FBC7174150F894500588A16 /* EXiLE-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EXiLE-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FBC7178150F894500588A16 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6FBC717A150F894500588A16 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6FBC717C150F894500588A16 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6FBC7180150F894500588A16 /* EXiLE-Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EXiLE-Demo-Info.plist"; sourceTree = "<group>"; };
+		6FBC7182150F894500588A16 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6FBC7184150F894500588A16 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6FBC7186150F894500588A16 /* EXiLE-Demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EXiLE-Demo-Prefix.pch"; sourceTree = "<group>"; };
+		6FBC7187150F894500588A16 /* BJAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BJAppDelegate.h; sourceTree = "<group>"; };
+		6FBC7188150F894500588A16 /* BJAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BJAppDelegate.m; sourceTree = "<group>"; };
+		6FBC718A150F894500588A16 /* BJViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BJViewController.h; sourceTree = "<group>"; };
+		6FBC718B150F894500588A16 /* BJViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BJViewController.m; sourceTree = "<group>"; };
+		6FBC718E150F894500588A16 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BJViewController.xib; sourceTree = "<group>"; };
+		6FBC7196150F8A8A00588A16 /* EXiLE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXiLE.h; sourceTree = "<group>"; };
+		6FBC7197150F8A8A00588A16 /* EXiLE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXiLE.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6FBC7171150F894500588A16 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FBC7179150F894500588A16 /* UIKit.framework in Frameworks */,
+				6FBC717B150F894500588A16 /* Foundation.framework in Frameworks */,
+				6FBC717D150F894500588A16 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6FBC7169150F894400588A16 = {
+			isa = PBXGroup;
+			children = (
+				6FBC717E150F894500588A16 /* EXiLE-Demo */,
+				6FBC7177150F894500588A16 /* Frameworks */,
+				6FBC7175150F894500588A16 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6FBC7175150F894500588A16 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6FBC7174150F894500588A16 /* EXiLE-Demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6FBC7177150F894500588A16 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6FBC7178150F894500588A16 /* UIKit.framework */,
+				6FBC717A150F894500588A16 /* Foundation.framework */,
+				6FBC717C150F894500588A16 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6FBC717E150F894500588A16 /* EXiLE-Demo */ = {
+			isa = PBXGroup;
+			children = (
+				6FBC7195150F8A8A00588A16 /* EXiLE */,
+				6FBC7187150F894500588A16 /* BJAppDelegate.h */,
+				6FBC7188150F894500588A16 /* BJAppDelegate.m */,
+				6FBC718A150F894500588A16 /* BJViewController.h */,
+				6FBC718B150F894500588A16 /* BJViewController.m */,
+				6FBC718D150F894500588A16 /* BJViewController.xib */,
+				6FBC717F150F894500588A16 /* Supporting Files */,
+			);
+			path = "EXiLE-Demo";
+			sourceTree = "<group>";
+		};
+		6FBC717F150F894500588A16 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6FBC7180150F894500588A16 /* EXiLE-Demo-Info.plist */,
+				6FBC7181150F894500588A16 /* InfoPlist.strings */,
+				6FBC7184150F894500588A16 /* main.m */,
+				6FBC7186150F894500588A16 /* EXiLE-Demo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6FBC7195150F8A8A00588A16 /* EXiLE */ = {
+			isa = PBXGroup;
+			children = (
+				6FBC7196150F8A8A00588A16 /* EXiLE.h */,
+				6FBC7197150F8A8A00588A16 /* EXiLE.m */,
+			);
+			name = EXiLE;
+			path = ../../EXiLE;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6FBC7173150F894500588A16 /* EXiLE-Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FBC7192150F894500588A16 /* Build configuration list for PBXNativeTarget "EXiLE-Demo" */;
+			buildPhases = (
+				6FBC7170150F894500588A16 /* Sources */,
+				6FBC7171150F894500588A16 /* Frameworks */,
+				6FBC7172150F894500588A16 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "EXiLE-Demo";
+			productName = "EXiLE-Demo";
+			productReference = 6FBC7174150F894500588A16 /* EXiLE-Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6FBC716B150F894400588A16 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = BJ;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 6FBC716E150F894400588A16 /* Build configuration list for PBXProject "EXiLE-Demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6FBC7169150F894400588A16;
+			productRefGroup = 6FBC7175150F894500588A16 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6FBC7173150F894500588A16 /* EXiLE-Demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6FBC7172150F894500588A16 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FBC7183150F894500588A16 /* InfoPlist.strings in Resources */,
+				6FBC718F150F894500588A16 /* BJViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6FBC7170150F894500588A16 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FBC7185150F894500588A16 /* main.m in Sources */,
+				6FBC7189150F894500588A16 /* BJAppDelegate.m in Sources */,
+				6FBC718C150F894500588A16 /* BJViewController.m in Sources */,
+				6FBC7198150F8A8A00588A16 /* EXiLE.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6FBC7181150F894500588A16 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6FBC7182150F894500588A16 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6FBC718D150F894500588A16 /* BJViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6FBC718E150F894500588A16 /* en */,
+			);
+			name = BJViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6FBC7190150F894500588A16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		6FBC7191150F894500588A16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6FBC7193150F894500588A16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EXiLE-Demo/EXiLE-Demo-Prefix.pch";
+				INFOPLIST_FILE = "EXiLE-Demo/EXiLE-Demo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6FBC7194150F894500588A16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EXiLE-Demo/EXiLE-Demo-Prefix.pch";
+				INFOPLIST_FILE = "EXiLE-Demo/EXiLE-Demo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6FBC716E150F894400588A16 /* Build configuration list for PBXProject "EXiLE-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FBC7190150F894500588A16 /* Debug */,
+				6FBC7191150F894500588A16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6FBC7192150F894500588A16 /* Build configuration list for PBXNativeTarget "EXiLE-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FBC7193150F894500588A16 /* Debug */,
+				6FBC7194150F894500588A16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6FBC716B150F894400588A16 /* Project object */;
+}
