@@ -88,7 +88,8 @@
 }
 
 - (void)localizeTextField:(UITextField*)textField {
-    textField.text = [self getLocalizedString:textField.text withSuffix:TEXT_FIELD_DEFAULT_TEXT_SUFFIX];
+    if (![textField.text isEqualToString:@""])
+        textField.text = [self getLocalizedString:textField.text withSuffix:TEXT_FIELD_DEFAULT_TEXT_SUFFIX];
     
     if (![textField.placeholder isEqualToString:@""])
         textField.placeholder = [self getLocalizedString:textField.placeholder withSuffix:TEXT_FIELD_PLACEHOLDER_TEXT_SUFFIX];
