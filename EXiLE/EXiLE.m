@@ -23,7 +23,7 @@
     [acceptedCharacters formUnionWithCharacterSet:[NSCharacterSet decimalDigitCharacterSet]];
     [acceptedCharacters addCharactersInString:@"_"];
     
-    NSString *fixedString = [NSString stringWithFormat:@"%@_%@", viewControllerPrefix, theString];
+    NSString *fixedString = [NSString stringWithFormat:@"%@_%@", currentPrefix, theString];
     fixedString = [fixedString stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     fixedString = [[fixedString componentsSeparatedByCharactersInSet:[acceptedCharacters invertedSet]] componentsJoinedByString:@""];
     fixedString = [fixedString uppercaseString];
@@ -82,10 +82,8 @@
 }
 
 - (void)localizeViewController:(UIViewController*)viewController withLocalizationPrefix:(NSString*)prefix {
-    processing = viewController;
-    viewControllerPrefix = [prefix copy];
+    currentPrefix = [prefix copy];
     [self localizeViewRecursively:viewController.view];
-    processing = nil;
 }
 
 

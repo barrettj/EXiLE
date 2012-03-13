@@ -21,8 +21,7 @@
 typedef void (^UnlocalizedStringFoundBlock)(NSString *unlocalizedString, NSString *localizationKey);
 
 @interface EasyXibLocalizationEntity : NSObject {
-    UIViewController *processing;
-    NSString *viewControllerPrefix;
+    NSString *currentPrefix;
 }
 
 @property (readwrite, copy) UnlocalizedStringFoundBlock onUnlocalizedString;
