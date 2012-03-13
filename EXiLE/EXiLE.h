@@ -24,6 +24,8 @@ typedef void (^UnlocalizedStringFoundBlock)(NSString *unlocalizedString, NSStrin
     NSString *currentPrefix;
 }
 
+@property (readwrite, assign) BOOL ignoreIfSurroundedByUnderscore;
+
 @property (readwrite, copy) UnlocalizedStringFoundBlock onUnlocalizedString;
 
 - (void)localizeViewController:(UIViewController*)viewController withLocalizationPrefix:(NSString*)prefix;

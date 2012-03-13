@@ -9,7 +9,7 @@
 
 @implementation EasyXibLocalizationEntity
 @synthesize onUnlocalizedString;
-
+@synthesize ignoreIfSurroundedByUnderscore;
 
 - (void)localizeAccessibilityLabelFor:(UIView*)view withDefault:(NSString*)theString {
     if (view.accessibilityLabel != nil && ![view.accessibilityLabel isEqualToString:theString]) {
@@ -33,7 +33,8 @@
     NSString *localizedString = NSLocalizedString(fixedString, nil);
     
     if ([localizedString isEqualToString:fixedString]) {
-        if (self.onUnlocalizedString)
+        
+        if (self.onUnlocalizedString && !(self.ignoreIfSurroundedByUnderscore && [theString hasSuffix:@"_"] && [theString hasPrefix:@"_"]))
             self.onUnlocalizedString(theString, fixedString);
         
         return theString;
