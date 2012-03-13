@@ -18,6 +18,8 @@
 }
 
 - (NSString *)getLocalizedString:(NSString*)theString withSuffix:(NSString*)suffix {
+    if (theString == nil) return nil;
+    
     NSMutableCharacterSet *acceptedCharacters = [[NSMutableCharacterSet alloc] init];
     [acceptedCharacters formUnionWithCharacterSet:[NSCharacterSet letterCharacterSet]];
     [acceptedCharacters formUnionWithCharacterSet:[NSCharacterSet decimalDigitCharacterSet]];
@@ -44,7 +46,8 @@
 }
 
 - (void)localizeButton:(UIButton*)button {
-    button.titleLabel.text = [self getLocalizedString: button.titleLabel.text withSuffix:BUTTON_TEXT_SUFFIX];
+    button.titleLabel.text = [self getLocalizedString:button.titleLabel.text withSuffix:BUTTON_TEXT_SUFFIX];
+    
     [self localizeAccessibilityLabelFor:button withDefault:button.titleLabel.text];
 }
 
@@ -85,6 +88,7 @@
 - (void)localizeViewController:(UIViewController*)viewController withLocalizationPrefix:(NSString*)prefix {
     currentPrefix = [prefix copy];
     [self localizeViewRecursively:viewController.view];
+    currentPrefix = nil;
 }
 
 
