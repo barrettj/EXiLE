@@ -29,6 +29,7 @@ typedef void (^UnlocalizedStringFoundBlock)(NSString *unlocalizedString, NSStrin
 @property (readwrite, copy) UnlocalizedStringFoundBlock onUnlocalizedString;
 
 - (void)localizeViewController:(UIViewController*)viewController withLocalizationPrefix:(NSString*)prefix;
+- (void)localizeView:(UIView*)view withLocalizationPrefix:(NSString*)prefix;
 
 + (EasyXibLocalizationEntity*)shared;
 

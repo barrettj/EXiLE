@@ -85,12 +85,25 @@
     }
 }
 
-- (void)localizeViewController:(UIViewController*)viewController withLocalizationPrefix:(NSString*)prefix {
+- (void)localizeView:(UIView*)view withLocalizationPrefix:(NSString*)prefix {
     currentPrefix = [prefix copy];
-    [self localizeViewRecursively:viewController.view];
+    [self localizeViewRecursively:view];
     currentPrefix = nil;
 }
 
+- (void)localizeViewController:(UIViewController*)viewController withLocalizationPrefix:(NSString*)prefix {
+    [self localizeView:viewController.view withLocalizationPrefix:prefix];
+}
+
+- (id)init {
+    self = [super init];
+    
+    if (self) {
+        self.ignoreIfSurroundedByUnderscore = YES;
+    }
+    
+    return self;
+}
 
 + (EasyXibLocalizationEntity*)shared {
     static dispatch_once_t pred;
