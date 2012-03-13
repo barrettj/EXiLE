@@ -25,6 +25,8 @@ typedef void (^UnlocalizedStringFoundBlock)(NSString *unlocalizedString, NSStrin
 }
 
 @property (readwrite, assign) BOOL ignoreIfSurroundedByUnderscore;
+@property (readwrite, assign) BOOL allowLocalizationKeySpecification;
+
 
 @property (readwrite, copy) UnlocalizedStringFoundBlock onUnlocalizedString;
 

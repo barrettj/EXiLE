@@ -10,6 +10,7 @@
 @implementation EasyXibLocalizationEntity
 @synthesize onUnlocalizedString;
 @synthesize ignoreIfSurroundedByUnderscore;
+@synthesize allowLocalizationKeySpecification;
 
 - (void)localizeAccessibilityLabelFor:(UIView*)view withDefault:(NSString*)theString {
     if (view.accessibilityLabel != nil && ![view.accessibilityLabel isEqualToString:theString]) {
@@ -45,6 +46,20 @@
     return localizedString;
 }
 
+- (NSString *)getLocalizedStringForKey:(NSString*)key withDefault:(NSString*)defaultText {
+    NSString *localizedString = NSLocalizedString(key, nil);
+    
+    if ([localizedString isEqualToString:key]) {
+        
+        if (self.onUnlocalizedString)
+            self.onUnlocalizedString(defaultText, key);
+        
+        return defaultText;
+    }
+    
+    return localizedString;
+}
+
 - (void)localizeButton:(UIButton*)button {
     button.titleLabel.text = [self getLocalizedString:button.titleLabel.text withSuffix:BUTTON_TEXT_SUFFIX];
     
@@ -52,7 +67,23 @@
 }
 
 - (void)localizeLabel:(UILabel*)label {
-    label.text = [self getLocalizedString:label.text withSuffix:LABEL_TEXT_SUFFIX];
+    if (self.allowLocalizationKeySpecification && [label.text hasSuffix:@"**"]) {
+        NSArray *components = [label.text componentsSeparatedByString:@"**"];
+        
+        if (components.count < 2) {
+            NSLog(@"Incorrect use of ** syntax in EXiLE.");
+            label.text = [self getLocalizedString:label.text withSuffix:LABEL_TEXT_SUFFIX];
+            return;
+        }
+        
+        NSString *defaultText = [components objectAtIndex:0];
+        NSString *key = [components objectAtIndex:1];
+        label.text = [self getLocalizedStringForKey:key withDefault:defaultText];
+    }
+    else {
+        label.text = [self getLocalizedString:label.text withSuffix:LABEL_TEXT_SUFFIX];
+    }
+    
     [self localizeAccessibilityLabelFor:label withDefault:label.text];
 }
 
@@ -104,6 +135,7 @@
     
     if (self) {
         self.ignoreIfSurroundedByUnderscore = YES;
+        self.allowLocalizationKeySpecification = YES;
     }
     
     return self;
