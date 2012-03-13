@@ -76,6 +76,10 @@
     else if ([view isKindOfClass:[UITextField class]]) {
         [self localizeTextField:(UITextField*)view];
     }
+    else if ([view isKindOfClass:[UIImageView class]]) {
+        if (view.accessibilityLabel != nil && ![view.accessibilityLabel hasSuffix:@".png"])
+            [self localizeAccessibilityLabelFor:view withDefault:view.accessibilityLabel];
+    }
     else {
         [self localizeAccessibilityLabelFor:view withDefault:nil];
         
