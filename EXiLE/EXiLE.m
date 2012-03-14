@@ -60,6 +60,8 @@
 }
 
 - (void)localize:(UIView*)view set:(SEL)setSelector text:(NSString*)text suffix:(NSString*)suffix {
+    if (text == nil) return;
+    
     if (self.allowLocalizationKeySpecification && [text hasSuffix:@"**"]) {
         NSArray *components = [text componentsSeparatedByString:@"**"];
         
@@ -80,7 +82,7 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    [view performSelector:setSelector withObject:[self getLocalizedString:text withSuffix:BUTTON_TEXT_SUFFIX]];
+    [view performSelector:setSelector withObject:[self getLocalizedString:text withSuffix:suffix]];
 #pragma clang diagnostic pop 
     
     return;
