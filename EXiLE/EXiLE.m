@@ -14,7 +14,7 @@
 
 - (void)localizeAccessibilityLabelFor:(UIView*)view withDefault:(NSString*)theString {
     if (view.accessibilityLabel != nil && ![view.accessibilityLabel isEqualToString:theString]) {
-        view.accessibilityLabel = [self getLocalizedString:view.accessibilityLabel withSuffix:ACCESSIBILITY_LABEL_SUFFIX];
+        [self localize:view set:@selector(setAccessibilityLabel:) text:view.accessibilityLabel suffix:ACCESSIBILITY_LABEL_SUFFIX];
     }
 }
 
@@ -50,7 +50,6 @@
     NSString *localizedString = NSLocalizedString(key, nil);
     
     if ([localizedString isEqualToString:key]) {
-        
         if (self.onUnlocalizedString)
             self.onUnlocalizedString(defaultText, key);
         
@@ -60,39 +59,53 @@
     return localizedString;
 }
 
+- (void)localize:(UIView*)view set:(SEL)setSelector text:(NSString*)text suffix:(NSString*)suffix {
+    if (self.allowLocalizationKeySpecification && [text hasSuffix:@"**"]) {
+        NSArray *components = [text componentsSeparatedByString:@"**"];
+        
+        if (components.count == 3) {
+            NSString *defaultText = [components objectAtIndex:0];
+            NSString *key = [components objectAtIndex:1];
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [view performSelector:setSelector withObject:[self getLocalizedStringForKey:key withDefault:defaultText]];
+#pragma clang diagnostic pop 
+            
+            return;
+        }
+        
+        NSLog(@"Incorrect use of ** syntax in EXiLE.");
+    }
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    [view performSelector:setSelector withObject:[self getLocalizedString:text withSuffix:BUTTON_TEXT_SUFFIX]];
+#pragma clang diagnostic pop 
+    
+    return;
+}
+
 - (void)localizeButton:(UIButton*)button {
-    button.titleLabel.text = [self getLocalizedString:button.titleLabel.text withSuffix:BUTTON_TEXT_SUFFIX];
+    [self localize:button.titleLabel set:@selector(setText:) text:button.titleLabel.text suffix:BUTTON_TEXT_SUFFIX];
     
     [self localizeAccessibilityLabelFor:button withDefault:button.titleLabel.text];
 }
 
 - (void)localizeLabel:(UILabel*)label {
-    if (self.allowLocalizationKeySpecification && [label.text hasSuffix:@"**"]) {
-        NSArray *components = [label.text componentsSeparatedByString:@"**"];
-        
-        if (components.count < 2) {
-            NSLog(@"Incorrect use of ** syntax in EXiLE.");
-            label.text = [self getLocalizedString:label.text withSuffix:LABEL_TEXT_SUFFIX];
-            return;
-        }
-        
-        NSString *defaultText = [components objectAtIndex:0];
-        NSString *key = [components objectAtIndex:1];
-        label.text = [self getLocalizedStringForKey:key withDefault:defaultText];
-    }
-    else {
-        label.text = [self getLocalizedString:label.text withSuffix:LABEL_TEXT_SUFFIX];
-    }
+    [self localize:label set:@selector(setText:) text:label.text suffix:LABEL_TEXT_SUFFIX];
     
     [self localizeAccessibilityLabelFor:label withDefault:label.text];
 }
 
 - (void)localizeTextField:(UITextField*)textField {
-    if (![textField.text isEqualToString:@""])
-        textField.text = [self getLocalizedString:textField.text withSuffix:TEXT_FIELD_DEFAULT_TEXT_SUFFIX];
+    if (![textField.text isEqualToString:@""]) {
+        [self localize:textField set:@selector(setText:) text:textField.text suffix:TEXT_FIELD_DEFAULT_TEXT_SUFFIX];
+    }
     
-    if (![textField.placeholder isEqualToString:@""])
-        textField.placeholder = [self getLocalizedString:textField.placeholder withSuffix:TEXT_FIELD_PLACEHOLDER_TEXT_SUFFIX];
+    if (![textField.placeholder isEqualToString:@""]) {
+        [self localize:textField set:@selector(setPlaceholder:) text:textField.placeholder suffix:TEXT_FIELD_PLACEHOLDER_TEXT_SUFFIX];
+    }
     
     [self localizeAccessibilityLabelFor:textField withDefault:textField.text];
 }
