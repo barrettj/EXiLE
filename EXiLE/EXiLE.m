@@ -7,6 +7,8 @@
 
 #import "EXiLE.h"
 
+typedef void (^ExileSetTextBlock)(NSString *newText);
+
 @implementation EasyXibLocalizationEntity
 @synthesize onUnlocalizedString;
 @synthesize ignoreIfSurroundedByUnderscore;
@@ -60,6 +62,17 @@
 }
 
 - (void)localize:(UIView*)view set:(SEL)setSelector text:(NSString*)text suffix:(NSString*)suffix {
+    ExileSetTextBlock setViaSelector = ^(NSString *newText) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [view performSelector:setSelector withObject:newText];
+#pragma clang diagnostic pop           
+    };
+    
+    return [self localizeText:text setTextBlock:setViaSelector suffix:suffix];
+}
+
+- (void)localizeText:(NSString*)text setTextBlock:(ExileSetTextBlock)setBlock suffix:(NSString*)suffix {
     if (text == nil) return;
     
     if (self.allowLocalizationKeySpecification && [text hasSuffix:@"**"]) {
@@ -68,22 +81,16 @@
         if (components.count == 3) {
             NSString *defaultText = [components objectAtIndex:0];
             NSString *key = [components objectAtIndex:1];
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            [view performSelector:setSelector withObject:[self getLocalizedStringForKey:key withDefault:defaultText]];
-#pragma clang diagnostic pop 
+            
+            setBlock([self getLocalizedStringForKey:key withDefault:defaultText]);
             
             return;
         }
         
         NSLog(@"Incorrect use of ** syntax in EXiLE.");
     }
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    [view performSelector:setSelector withObject:[self getLocalizedString:text withSuffix:suffix]];
-#pragma clang diagnostic pop 
+    
+    setBlock([self getLocalizedString:text withSuffix:suffix]);
     
     return;
 }
@@ -113,6 +120,19 @@
 }
 
 
+- (void)localizeSegmentedControl:(UISegmentedControl*)seg {
+    if (seg.numberOfSegments > 0) {
+        for (NSUInteger i = 0; i < seg.numberOfSegments; i++) {
+            [self localizeText:[seg titleForSegmentAtIndex:i] setTextBlock:^(NSString *newText) {
+                [seg setTitle:newText forSegmentAtIndex:i];
+            } suffix:SEGMENTED_CONTROL_SEGMENT];
+        }
+    }
+    
+    [self localizeAccessibilityLabelFor:seg withDefault:nil];
+}
+
+
 - (void)localizeViewRecursively:(UIView*)view {
     if ([view isKindOfClass:[UIButton class]]) {
         [self localizeButton:(UIButton*)view];
@@ -122,6 +142,9 @@
     }
     else if ([view isKindOfClass:[UITextField class]]) {
         [self localizeTextField:(UITextField*)view];
+    }
+    else if ([view isKindOfClass:[UISegmentedControl class]]) {
+        [self localizeSegmentedControl:(UISegmentedControl*)view];
     }
     else if ([view isKindOfClass:[UIImageView class]]) {
         if (view.accessibilityLabel != nil && ![view.accessibilityLabel hasSuffix:@".png"])
