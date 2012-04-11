@@ -41,7 +41,12 @@ Which you can basically copy and paste into your Localizable.strings file (after
 
 Ignoring a Control
 -------------
-Any control who's text starts and ends with an underscore will not be localized (as it's assumed that control's text will be set via code later on) - e.g. set your UILabel's text property to _I'm set in code later_ and EXiLE will not attempt to localize that control.
+Any control who's text starts and ends with an underscore will not be localized (as it's assumed that control's text will be set via code later on)
+
+E.G.:
+```
+_I'm set in code later_
+```
 
 Manually Specifying a Localization Key
 -------------
