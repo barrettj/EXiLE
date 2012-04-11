@@ -7,22 +7,22 @@ EXiLE loops through all the nested views and generates what it thinks the a good
 
 How to Use It / How I Use It
 -------------
-I #import "EXile.h" in my precompiled header so it's always available.
+I #import "EXiLE.h" in my precompiled header so it's always available.
 
 In my AppDelegate application:didFinishLaunchingWithOptions:, I add the following:
 
-```
-    // setup a block so you can be notified when a localization is missing
-    EXILE.onUnlocalizedString = ^(NSString *unlocalizedString, NSString *localizationKey) {
-        NSLog(@"\"%@\" = \"%@\";", localizationKey, unlocalizedString);
-	    };
-```
+````objective-c
+// setup a block so you can be notified when a localization is missing
+EXILE.onUnlocalizedString = ^(NSString *unlocalizedString, NSString *localizationKey) {
+    NSLog(@"\"%@\" = \"%@\";", localizationKey, unlocalizedString);
+    };
+````
 
 Then in your ViewControllers, add this to viewDidLoad:
 
-```
+````objective-c
 [EXILE localizeViewController:self withLocalizationPrefix:@"BJVC"];
-```
+````
 
 Then if you run your app (assuming you didn't already have the fields localized), you'll get output similar to the following:
 
