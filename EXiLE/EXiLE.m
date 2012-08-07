@@ -96,7 +96,11 @@ typedef void (^ExileSetTextBlock)(NSString *newText);
 }
 
 - (void)localizeButton:(UIButton*)button {
-    [self localize:button.titleLabel set:@selector(setText:) text:button.titleLabel.text suffix:BUTTON_TEXT_SUFFIX];
+    [self localizeText:button.titleLabel.text
+          setTextBlock:^(NSString *newText) {
+              [button setTitle:newText forState:UIControlStateNormal];
+          }
+                suffix:BUTTON_TEXT_SUFFIX];
     
     [self localizeAccessibilityLabelFor:button withDefault:button.titleLabel.text];
 }
