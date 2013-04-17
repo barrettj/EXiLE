@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "EXiLE"
   s.version      = "1.0.0"
-  s.summary      = "Easy Xib Localization Entity"
+  s.summary      = "Easy Xib Localization Entity."
   s.homepage     = "https://github.com/barrettj/EXiLE"
   s.license      = 'MIT'
   s.authors      = { "Barrett Jacobsen" => "admin@barrettj.com" }
