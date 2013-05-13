@@ -9,7 +9,9 @@
 
 typedef void (^ExileSetTextBlock)(NSString *newText);
 
-@implementation EasyXibLocalizationEntity
+@implementation EasyXibLocalizationEntity {
+    NSCharacterSet *_unacceptedCharacters;
+}
 @synthesize onUnlocalizedString;
 @synthesize ignoreIfSurroundedByUnderscore;
 @synthesize allowLocalizationKeySpecification;
@@ -23,14 +25,10 @@ typedef void (^ExileSetTextBlock)(NSString *newText);
 - (NSString *)getLocalizedString:(NSString*)theString withSuffix:(NSString*)suffix {
     if (theString == nil) return nil;
     
-    NSMutableCharacterSet *acceptedCharacters = [[NSMutableCharacterSet alloc] init];
-    [acceptedCharacters formUnionWithCharacterSet:[NSCharacterSet letterCharacterSet]];
-    [acceptedCharacters formUnionWithCharacterSet:[NSCharacterSet decimalDigitCharacterSet]];
-    [acceptedCharacters addCharactersInString:@"_"];
     
     NSString *fixedString = [NSString stringWithFormat:@"%@_%@", currentPrefix, theString];
     fixedString = [fixedString stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-    fixedString = [[fixedString componentsSeparatedByCharactersInSet:[acceptedCharacters invertedSet]] componentsJoinedByString:@""];
+    fixedString = [[fixedString componentsSeparatedByCharactersInSet:_unacceptedCharacters] componentsJoinedByString:@""];
     fixedString = [fixedString uppercaseString];
     
     fixedString = [fixedString stringByAppendingString:suffix];
@@ -179,6 +177,13 @@ typedef void (^ExileSetTextBlock)(NSString *newText);
     if (self) {
         self.ignoreIfSurroundedByUnderscore = YES;
         self.allowLocalizationKeySpecification = YES;
+        
+        NSMutableCharacterSet *acceptedCharacters = [[NSMutableCharacterSet alloc] init];
+        [acceptedCharacters formUnionWithCharacterSet:[NSCharacterSet letterCharacterSet]];
+        [acceptedCharacters formUnionWithCharacterSet:[NSCharacterSet decimalDigitCharacterSet]];
+        [acceptedCharacters addCharactersInString:@"_"];
+    
+        _unacceptedCharacters = [acceptedCharacters invertedSet];
     }
     
     return self;
