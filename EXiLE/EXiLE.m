@@ -94,6 +94,10 @@ typedef void (^ExileSetTextBlock)(NSString *newText);
 }
 
 - (void)localizeButton:(UIButton*)button {
+    if ([NSStringFromClass([button.superview class]) isEqualToString:@"UITableViewCellScrollView"]) {
+        return;
+    }
+    
     [self localizeText:button.titleLabel.text
           setTextBlock:^(NSString *newText) {
               [button setTitle:newText forState:UIControlStateNormal];
