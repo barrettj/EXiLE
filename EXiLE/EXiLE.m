@@ -23,8 +23,7 @@ typedef void (^ExileSetTextBlock)(NSString *newText);
 }
 
 - (NSString *)getLocalizedString:(NSString*)theString withSuffix:(NSString*)suffix {
-    if (theString == nil) return nil;
-    
+    if (theString == nil || theString.length == 0) return nil;
     
     NSString *fixedString = [NSString stringWithFormat:@"%@_%@", currentPrefix, theString];
     fixedString = [fixedString stringByReplacingOccurrencesOfString:@" " withString:@"_"];
